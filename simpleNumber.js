@@ -1,20 +1,22 @@
 function simpleNumber(n) {
-    listnumber = [1, 2, 3, 5]
-    if (listnumber.length > n) {
-    let slicedListNumber = listnumber.slice(0, n);
-    return slicedListNumber
-    } else {
-        for (let i = 6; listnumber.length < n; i++) {  
-            // console.log(i);
-            if ((i % 2 === 0) || (i % 3 === 0) || (i % 5 === 0)) {
-                // console.log('И все таки оно делится!') 
-            } else {
-                listnumber.push(i) 
+    listnumber = [2]
+    for (let i = 3; listnumber.length < n-1; i++) {  
+        // console.log(i);
+        var flag = 0
+        for (let elem of listnumber) {
+            if (i % elem == 0) {
+                flag = 1
+                // console.log('и все таки оно делится!');
             }
+        } 
+        if (flag == 0) {
+            listnumber.push(i)
         }
-        return listnumber
     }
+    listnumber.unshift(1)
+    return listnumber
 }
+
 
 console.time('simpleNumber')
 console.log(simpleNumber(process.argv[2]))
